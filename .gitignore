@@ -1,0 +1,6 @@
+node_modules/
+stock.db
+stock.db-wal
+stock.db-shm
+.DS_Store
+.claude/

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在庫管理</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>🏠 在庫管理</h1>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="all">すべて</button>
+      <button class="tab" data-tab="tobuy">買うもの 🛒</button>
+      <button class="btn-add" id="openModal">+ 追加</button>
+    </nav>
+
+    <main class="main">
+      <section class="category" data-category="refrigerator">
+        <h2>🥬 冷蔵庫</h2>
+        <div class="items-list" id="refrigerator-items"></div>
+      </section>
+
+      <section class="category" data-category="daily">
+        <h2>🧴 日用品</h2>
+        <div class="items-list" id="daily-items"></div>
+      </section>
+
+      <section class="category" data-category="other">
+        <h2>📦 その他</h2>
+        <div class="items-list" id="other-items"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 追加/編集モーダル -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">アイテムを追加</h3>
+        <button class="modal-close" id="closeModal">&times;</button>
+      </div>
+      <form id="itemForm">
+        <input type="hidden" id="itemId">
+
+        <div class="form-group">
+          <label for="itemName">名前</label>
+          <input type="text" id="itemName" required placeholder="例: 牛乳">
+        </div>
+
+        <div class="form-group">
+          <label for="itemCategory">カテゴリ</label>
+          <select id="itemCategory" required>
+            <option value="refrigerator">🥬 冷蔵庫</option>
+            <option value="daily">🧴 日用品</option>
+            <option value="other">📦 その他</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="itemQuantity">現在の在庫</label>
+            <input type="number" id="itemQuantity" min="0" value="0" required>
+          </div>
+          <div class="form-group">
+            <label for="itemMinQuantity">最小在庫</label>
+            <input type="number" id="itemMinQuantity" min="0" value="1" required>
+          </div>
+          <div class="form-group">
+            <label for="itemUnit">単位</label>
+            <input type="text" id="itemUnit" placeholder="個" value="個">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn-cancel" id="cancelModal">キャンセル</button>
+          <button type="submit" class="btn-save">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
