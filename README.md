@@ -13,7 +13,7 @@
 ## ラズベリーパイでのセットアップ
 
 ### 1. Node.js のインストール
-
+通常
 ```bash
 # Node.js 20.x をインストール
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -23,7 +23,23 @@ sudo apt-get install -y nodejs
 node -v
 npm -v
 ```
+ARM v6アーキテクチャの場合
+```bash
+# Node.js 20.x をダウンロード
+wget https://unofficial-builds.nodejs.org/download/release/v20.11.0/node-v20.11.0-linux-armv6l.tar.xz
 
+# 解凍してインストール
+sudo mkdir -p /usr/local/lib/nodejs
+sudo tar -xJvf node-v20.11.0-linux-armv6l.tar.xz -C /usr/local/lib/nodejs
+
+# パスを設定
+echo 'export PATH=/usr/local/lib/nodejs/node-v20.11.0-linux-armv6l/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+
+# バージョン確認
+node -v
+npm -v
+```
 ### 2. アプリのセットアップ
 
 ```bash
