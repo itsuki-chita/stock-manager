@@ -63,6 +63,7 @@ sudo nano /etc/systemd/system/stock.service
 
 以下の内容を貼り付け:
 
+User, WorkingDirectory, ExecStartは環境に応じて見直すこと
 ```ini
 [Unit]
 Description=Stock Manager App
